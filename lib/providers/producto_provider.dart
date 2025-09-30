@@ -12,6 +12,15 @@ class ProductoProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   String? get error => _error;
 
+  // Expose filtered streams for UI convenience
+  Stream<List<Producto>> productosPorCategoria(String categoryId) {
+    return _repository.getProductosPorCategoria(categoryId);
+  }
+
+  Stream<List<Producto>> productosPorTag(String tag) {
+    return _repository.getProductosPorTag(tag);
+  }
+
   ProductoProvider() {
     loadProductos();
   }
